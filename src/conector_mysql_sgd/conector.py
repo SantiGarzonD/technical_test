@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import text
 
 
 class Conector:
@@ -34,16 +35,17 @@ class Conector:
         self.db = db
         self.host = host
         self.port = port
-        self.url = 'mysql+pymysql://{}:{}@{}:{}/information_schema'.format(user, password, host, port)
+        self.url = 'mysql+mysqlconnector://{}:{}@{}:{}/information_schema'.format(user, password, host, port)
 
         self.engine = create_engine(self.url)
 
-        conn = self.engine.connect()
-        conn.execute('commit')
-        conn.execute('create database if not exists {}'.format(self.db))
-        conn.close()
-
         self.Session = sessionmaker(bind=self.engine)
+
+        self.session = self.Session()
+
+        exp = text("CREATE DATABASE IF NOT EXISTS {};".format(db))
+
+        self.session.execute(exp)
 
 
     def subir_df(self, df, tabla):

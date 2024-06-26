@@ -108,3 +108,21 @@ tabla_destino = 'nombre_de_tu_tabla'
 # Subir el DataFrame a la tabla especificada
 conector.subir_df(df, tabla_destino)
 ```
+
+## Método `consultar` de la clase `Conector`
+
+El método `consultar` es responsable de ejecutar una consulta SQL en una base de datos y devolver el resultado como un DataFrame de pandas.
+
+### Parámetros
+
+- `query`: Una cadena de texto (`str`) que contiene la consulta SQL a ejecutar. Es importante que la consulta especifique la base de datos a utilizar.
+
+```python
+# Suponiendo que `conector` es una instancia de la clase `Conector` ya configurada
+query = '''SELECT * FROM base_de_datos.nombre_de_tu_tabla
+            WHERE columna = 'valor';'''
+
+df = conector.consultar(query=query)
+
+print(df.head())
+```

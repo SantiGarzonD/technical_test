@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import text
-
+import pandas as pd
 
 class Conector:
     """
@@ -47,7 +47,17 @@ class Conector:
 
         self.session.execute(exp)
 
+        use_exp = text("USE {};".format(db))
+
+        self.session.execute(use_exp)
+
+        self.session.close()
+
         print('Proceso exitoso: Base de datos creada o ya existente.')
+
+        self.url = 'mysql+mysqlconnector://{}:{}@{}:{}/{}'.format(user, password, host, port, db)
+
+        self.engine = create_engine(self.url)
 
 
     def subir_df(self, df, tabla):
@@ -62,3 +72,16 @@ class Conector:
         df.to_sql(tabla, self.engine, if_exists='replace', index=False)
 
         print('Proceso exitoso: DataFrame subido a la tabla {}.'.format(tabla))
+
+    
+    def consultar(self, query):
+        """
+        Realiza una consulta a la base de datos.
+
+        Parámetros:
+        - query: Consulta a realizar. Importante declarar la base a usar
+        """
+        query = text(query)
+        df = pd.read_sql(query, self.engine)
+
+        return df

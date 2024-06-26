@@ -47,6 +47,8 @@ class Conector:
 
         self.session.execute(exp)
 
+        print('Proceso exitoso: Base de datos creada o ya existente.')
+
 
     def subir_df(self, df, tabla):
         """
@@ -58,3 +60,5 @@ class Conector:
 
         """
         df.to_sql(tabla, self.engine, if_exists='replace', index=False)
+
+        print('Proceso exitoso: DataFrame subido a la tabla {}.'.format(tabla))

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "conector-mysql-sgd"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
     "sqlalchemy",
     "mysql-connector-python",

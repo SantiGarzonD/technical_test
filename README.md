@@ -32,11 +32,10 @@ En la parte final está la descripción de como se usa el paquete
 
 2. En un Jupyter Notebook usando la librería conector-mysql-sgd realice los siguientes cruces:
 
-    1. ¿Cómo se distribuyen las tarjetas de crédito por sexo?
-    2. ¿Cuál es la cantidad de préstamos, y montos de préstamos por Año y Mes?
-    3. ¿Cuál es la cantidad de cuentas creadas por distrito y ciudad?
+    1. ¿Cuál es la cantidad de préstamos, y montos de préstamos por Año y Mes?
+    2. ¿Cuál es la cantidad de cuentas creadas por distrito y ciudad?
 
-3. Haz un tablero de PowerBI cargando todas las tablas con una visual por producto (tarjetas, cuentas, prestamos) que permita hacer análisis visuales a partir de la segregación de la información por medio de amplia gama de filtros.
+3. Haz un tablero de PowerBI con solo una vista (sin modificar el lienzo) eligiendo cualquiera de los tres productos que permita hacer análisis visuales a partir de la segregación de la información por medio de filtros.
 
 
 
